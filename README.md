@@ -13,12 +13,12 @@ Create an application that can be used to write, save, and delete notes.
 
 ## Installation
 
-To begin you will need to run an npm install inquirer. 
+To begin you will need to run an npm install inquirer. I also installed nodemon to monitor changes on my server.js and make sure that it remained open and updated. 
 
 ## Usage
 * I was able to load the page locally but I was unable to load it using heroku. I tried using the guide but I repeatedly got errors. <img src = cmd.jpg>.
 
-When I loaded the app locally I was able to see the landing page of the note taker and I could get to the screen where I could add a note. I was unable to save the notes / delete the notes. I think there may have been issues with the routes off my post and delete functions.
+When I loaded the app locally I was able to see the landing page of the note taker and I could get to the screen where I could add a note. I was unable to save the notes / delete the notes. I think there may have been issues with the routes off my post and delete functions. I accidentally deleted my original package.json so I tried to obtain it again. 
 
 ## Resources
 * npmjs
