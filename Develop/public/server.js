@@ -1,6 +1,6 @@
 // Dependencies
 const express = require("express");
-const path = require("path");
+// const path = require("path");
 
 // Express configuration
 const app = express();
@@ -14,6 +14,7 @@ app.use(express.json());
 
 // Require routes
 
+require("./routes/routes")(app);
 
 // Listener
 
