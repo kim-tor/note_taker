@@ -4,29 +4,32 @@ const path = require("path");
 module.exports = app => {
 
     // Grab the data from the db.json
-    fs.readFile("db/db.json", "utf8", (err, data) => {
-        if (err) throw err;
 
-        const notes = JSON.parse(data);
 
-        // Read the db.json file
-        app.get("/api/notes", (req, res) => {
+    // Read the db.json file
+    app.get("/api/notes", function (req, res) {
+        fs.readFile("db/db.json", "utf8", (err, data) => {
+            if (err) throw err;
+
+            var notes = JSON.parse(data);
             res.json(notes);
+
         });
-
-
-        // ROUTES
-
-        // Route to view index.html 
-        app.get("*", (req, res) => {
-            res.sendFile(path.join(__dirname, "../public/index.html"));
-        });
+    });
 
         // Route to view notes.html
-        app.get("/notes", (req, res) => {
+        app.get('/notes', function (req, res) {
             res.sendFile(path.join(__dirname, "../public/notes.html"));
         });
 
+        function updateDB() {
+            fs.writeFile("db/db.json", JSON.stringify(notes, "\t"), err => {
+                if (err) throw err;
+                return true;
+            });
+        };
+
+        // ROUTES
 
         app.post("/api/notes", (req, res) => {
             let newNote = req.body;
@@ -35,7 +38,7 @@ module.exports = app => {
         });
 
         // Retrieve a specific note
-        app.get("/api/notes/:id", (req,res) => {
+        app.get("/api/notes/:id", (req, res) => {
             res.json(notes[req.params.id]);
         });
 
@@ -46,11 +49,9 @@ module.exports = app => {
             console.log("Deleted note with id " + req.params.id);
         });
 
-        function updateDB() {
-            fs.writeFile("db/db.json", JSON.stringify(notes, "\t"), err => {
-                if (err) throw err;
-                return true;
-            });
-        };
-    });
+        // Route to view index.html 
+        app.get("*", (req, res) => {
+            res.sendFile(path.join(__dirname, "../public/index.html"));
+        });
+
 };
