@@ -17,3 +17,6 @@ app.use(express.json());
 
 // Listener
 
+app.listen(PORT => {
+    console.log("Listening on PORT: " + PORT);
+})
