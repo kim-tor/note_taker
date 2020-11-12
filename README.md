@@ -22,7 +22,7 @@ host is available.
 
 Some of the functionality is not working on my note app, the save and delete. I am still working through figuring out what needs to be fixed.
 
-![Note Taker](notetaker.jpg)
+![Note Taker](notetaker.JPG)
 
 ## Resources
 * npmjs
